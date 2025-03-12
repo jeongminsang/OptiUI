@@ -4,6 +4,12 @@
   "workspaces": [
     "packages/*"
   ],
+  "scripts": {
+    "dev": "lerna run dev --scope core",
+    "build": "lerna run build --scope core",
+    "lint": "lerna run lint --scope core",
+    "preview": "lerna run preview --scope core"
+  },
   "dependencies": {},
   "devDependencies": {
     "lerna": "^8.2.1"
