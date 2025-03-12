@@ -10,7 +10,13 @@
     "lint": "lerna run lint --scope core",
     "preview": "lerna run preview --scope core"
   },
-  "dependencies": {},
+  "dependencies": {
+    "next": "^15.2.2",
+    "nextra": "^4.2.16",
+    "nextra-theme-docs": "^4.2.16",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
   "devDependencies": {
     "lerna": "^8.2.1"
   }
