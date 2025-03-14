@@ -6,6 +6,7 @@
   ],
   "scripts": {
     "dev": "lerna run dev --scope core",
+    "dev-docs": "lerna run dev --scope docs",
     "build": "lerna run build --scope core",
     "lint": "lerna run lint --scope core",
     "preview": "lerna run preview --scope core"
