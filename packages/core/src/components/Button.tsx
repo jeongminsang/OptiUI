@@ -1,13 +1,13 @@
 "use client";
 import {
+  AnchorHTMLAttributes,
+  ButtonHTMLAttributes,
   ComponentPropsWithRef,
   ElementType,
-  EventHandler,
   FocusEventHandler,
   ForwardedRef,
   forwardRef,
   HTMLAttributes,
-  MutableRefObject,
   ReactElement,
   ReactNode,
   SyntheticEvent,
@@ -36,7 +36,6 @@ export type PolymorphicComponent<C extends ElementType, Props = object> = {
   displayName?: string;
 };
 
-// 기본 Button Props
 export type ButtonBaseProps = {
   children?: ReactNode;
   className?: string;
@@ -47,31 +46,22 @@ export type ButtonBaseProps = {
   to?: string;
 } & ButtonVariants;
 
-// Button Props 타입
-// export type ButtonProps<RootComponentType extends ElementType> =
-//   PolymorphicComponentProps<RootComponentType, ButtonBaseProps>;
-
-// Button 소유 상태 타입
 export interface ButtonOwnerState extends ButtonBaseProps {
   active: boolean;
   focusVisible: boolean;
 }
 
-// 유틸리티 함수
-// function composeClasses(
-//   slots: Record<string, (string | boolean | undefined)[]>
-// ): Record<string, string> {
-//   const result: Record<string, string> = {};
+type ButtonVariants = RecipeVariants<typeof buttonRecipe>;
 
-//   Object.entries(slots).forEach(([slot, classNames]) => {
-//     result[slot] = classNames.filter(Boolean).join(" ");
-//   });
-
-//   return result;
-// }
-
-// 이벤트 핸들러를 위한 타입
-// type EventHandlers = Record<string, EventHandler<SyntheticEvent>>;
+type ButtonProps<RootComponentType extends ElementType = "button"> = {
+  children?: ReactNode;
+  className?: string;
+  disabled?: boolean;
+  focusableWhenDisabled?: boolean;
+  href?: string;
+  to?: string;
+  as?: RootComponentType;
+} & ButtonVariants;
 
 function useButton(params: {
   disabled?: boolean;
@@ -129,20 +119,21 @@ function useButton(params: {
       }
     }
 
-    // 다른 핸들러들 추가
     Object.keys(otherHandlers).forEach((key) => {
       if (
         key.startsWith("on") &&
         typeof otherHandlers[key as keyof TOther] === "function"
       ) {
         const originalHandler = buttonProps[key] as
-          | EventHandler<SyntheticEvent>
+          | ((event: SyntheticEvent) => void)
           | undefined;
         buttonProps[key] = (event: SyntheticEvent) => {
           originalHandler?.(event);
           if (!disabled || key === "onBlur") {
             (
-              otherHandlers[key as keyof TOther] as EventHandler<SyntheticEvent>
+              otherHandlers[key as keyof TOther] as (
+                event: SyntheticEvent
+              ) => void
             )(event);
           }
         };
@@ -161,18 +152,6 @@ function useButton(params: {
     getRootProps,
   };
 }
-
-type ButtonVariants = RecipeVariants<typeof buttonRecipe>;
-
-type ButtonProps<RootComponentType extends React.ElementType = "button"> = {
-  children?: React.ReactNode;
-  className?: string;
-  disabled?: boolean;
-  focusableWhenDisabled?: boolean;
-  href?: string;
-  to?: string;
-  as?: RootComponentType;
-} & ButtonVariants;
 
 const Button = forwardRef(function Button<
   RootComponentType extends ElementType = "button"
@@ -208,22 +187,20 @@ const Button = forwardRef(function Button<
       if (typeof forwardedRef === "function") {
         forwardedRef(instance);
       } else if (forwardedRef) {
-        (forwardedRef as MutableRefObject<HTMLElement | null>).current =
-          instance;
+        forwardedRef.current = instance;
       }
     },
   });
 
   if (Component === "a") {
-    (rootProps as React.AnchorHTMLAttributes<HTMLAnchorElement>).href = disabled
+    (rootProps as AnchorHTMLAttributes<HTMLAnchorElement>).href = disabled
       ? undefined
       : href || to;
   } else if (
     Component === "button" &&
-    !(rootProps as React.ButtonHTMLAttributes<HTMLButtonElement>).type
+    !(rootProps as ButtonHTMLAttributes<HTMLButtonElement>).type
   ) {
-    (rootProps as React.ButtonHTMLAttributes<HTMLButtonElement>).type =
-      "button";
+    (rootProps as ButtonHTMLAttributes<HTMLButtonElement>).type = "button";
   }
 
   return <Component {...rootProps}>{children}</Component>;
