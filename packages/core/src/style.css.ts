@@ -111,3 +111,77 @@ export const buttonRecipe = recipe({
     variant: "primary",
   },
 });
+
+export const inputRecipe = recipe({
+  base: {
+    width: "320px",
+    fontFamily: "'IBM Plex Sans', sans-serif",
+    fontSize: "0.875rem",
+    fontWeight: 400,
+    lineHeight: 1.5,
+    padding: "8px 12px",
+    borderRadius: "8px",
+    border: `1px solid ${grey[200]}`,
+    backgroundColor: "#fff",
+    color: grey[900],
+    transition: "border-color 0.2s ease, box-shadow 0.2s ease",
+    boxShadow: `0px 2px 2px ${grey[50]}`,
+
+    selectors: {
+      "&:hover": {
+        borderColor: blue[400],
+      },
+      "&:focus": {
+        borderColor: blue[400],
+        boxShadow: `0 0 0 3px ${blue[200]}`,
+      },
+      "&:focus-visible": {
+        outline: "none",
+      },
+    },
+  },
+  variants: {
+    variant: {
+      outlined: {
+        border: `1px solid ${grey[300]}`,
+        backgroundColor: "white",
+        ":hover": { borderColor: blue[400] },
+        ":focus": { borderColor: blue[400], boxShadow: `0 0 0 3px ${blue[200]}` },
+      },
+      filled: {
+        backgroundColor: grey[100],
+        border: "none",
+        ":hover": { backgroundColor: grey[200] },
+        ":focus": { backgroundColor: grey[300] },
+      },
+    },
+    error: {
+      true: {
+        borderColor: "red",
+        boxShadow: "0 0 0 3px rgba(255, 0, 0, 0.2)",
+      },
+    },
+    disabled: {
+      true: {
+        backgroundColor: grey[200],
+        color: grey[500],
+        cursor: "not-allowed",
+        borderColor: grey[300],
+        boxShadow: "none",
+      },
+    },
+    darkMode: {
+      true: {
+        color: grey[300],
+        backgroundColor: grey[900],
+        borderColor: grey[700],
+        boxShadow: `0px 2px 2px ${grey[900]}`,
+        ":hover": { borderColor: blue[400] },
+        ":focus": { borderColor: blue[400], boxShadow: `0 0 0 3px ${blue[600]}` },
+      },
+    },
+  },
+  defaultVariants: {
+    variant: "outlined",
+  },
+});

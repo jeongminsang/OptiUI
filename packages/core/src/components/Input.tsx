@@ -1,20 +1,16 @@
-"use client";
-import * as React from "react";
-import { forwardRef, useState } from "react";
+import {
+  ChangeEventHandler,
+  FocusEventHandler,
+  FocusEvent,
+  forwardRef,
+  KeyboardEventHandler,
+  MouseEventHandler,
+  ReactNode,
+  // useState,
+} from "react";
+import { inputRecipe } from "../style.css";
 
-// 핵심 타입 정의
-// interface InputOwnerState {
-//   disabled?: boolean;
-//   error?: boolean;
-//   focused?: boolean;
-//   multiline?: boolean;
-//   startAdornment?: React.ReactNode;
-//   endAdornment?: React.ReactNode;
-//   type?: string;
-// }
-
-interface InputProps {
-  // 기본 HTML 속성
+type InputProps = {
   "aria-describedby"?: string;
   "aria-label"?: string;
   "aria-labelledby"?: string;
@@ -30,32 +26,19 @@ interface InputProps {
   required?: boolean;
   value?: string | number | readonly string[];
   type?: string;
-
-  // 커스텀 속성
   error?: boolean;
   multiline?: boolean;
   rows?: number;
-  startAdornment?: React.ReactNode;
-  endAdornment?: React.ReactNode;
-
-  // 이벤트 핸들러
-  onClick?: React.MouseEventHandler<HTMLInputElement | HTMLTextAreaElement>;
-  onChange?: React.ChangeEventHandler<HTMLInputElement | HTMLTextAreaElement>;
-  onKeyDown?: React.KeyboardEventHandler<
-    HTMLInputElement | HTMLTextAreaElement
-  >;
-  onKeyUp?: React.KeyboardEventHandler<HTMLInputElement | HTMLTextAreaElement>;
-  onFocus?: React.FocusEventHandler<HTMLInputElement | HTMLTextAreaElement>;
-  onBlur?: React.FocusEventHandler<HTMLInputElement | HTMLTextAreaElement>;
-}
-
-// 유틸리티 함수
-const combineClassNames = (
-  ...classes: (string | undefined | boolean | null)[]
-): string => {
-  return classes
-    .filter((cls): cls is string => typeof cls === "string" && cls !== "")
-    .join(" ");
+  startAdornment?: ReactNode;
+  endAdornment?: ReactNode;
+  variant?: "outlined" | "filled";
+  darkMode?: boolean;
+  onClick?: MouseEventHandler<HTMLInputElement | HTMLTextAreaElement>;
+  onChange?: ChangeEventHandler<HTMLInputElement | HTMLTextAreaElement>;
+  onKeyDown?: KeyboardEventHandler<HTMLInputElement | HTMLTextAreaElement>;
+  onKeyUp?: KeyboardEventHandler<HTMLInputElement | HTMLTextAreaElement>;
+  onFocus?: FocusEventHandler<HTMLInputElement | HTMLTextAreaElement>;
+  onBlur?: FocusEventHandler<HTMLInputElement | HTMLTextAreaElement>;
 };
 
 export const Input = forwardRef<HTMLDivElement, InputProps>((props, ref) => {
@@ -86,60 +69,36 @@ export const Input = forwardRef<HTMLDivElement, InputProps>((props, ref) => {
     value,
     type: typeProp,
     rows,
+    variant = "outlined",
+    darkMode = false,
     ...other
   } = props;
 
-  // 상태 관리
-  const [focused, setFocused] = useState(false);
+  // const [focused, setFocused] = useState(false);
 
-  // 이벤트 핸들러
   const handleFocus = (
-    event: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>
+    event: FocusEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
-    setFocused(true);
+    // setFocused(true);
     onFocus?.(event);
   };
 
   const handleBlur = (
-    event: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>
+    event: FocusEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
-    setFocused(false);
+    // setFocused(false);
     onBlur?.(event);
   };
 
-  // 입력 타입 설정
   const type = !multiline ? typeProp ?? "text" : undefined;
 
-  // 상태 객체
-  // const ownerState: InputOwnerState = {
-  //   disabled,
-  //   error,
-  //   focused,
-  //   multiline,
-  //   type,
-  //   startAdornment,
-  //   endAdornment,
-  // };
+  const rootProps = `${inputRecipe({
+    variant,
+    error,
+    disabled,
+    darkMode,
+  })} ${className || ""}`;
 
-  // 클래스 이름 구성
-  const rootClassName = combineClassNames(
-    "input-root",
-    disabled ? "input-disabled" : "",
-    error ? "input-error" : "",
-    focused ? "input-focused" : "",
-    multiline ? "input-multiline" : "",
-    startAdornment ? "input-adorned-start" : "",
-    endAdornment ? "input-adorned-end" : "",
-    className || ""
-  );
-
-  const inputClassName = combineClassNames(
-    "input-input",
-    disabled ? "input-input-disabled" : "",
-    multiline ? "input-input-multiline" : ""
-  );
-
-  // 기본 props
   const inputProps = {
     "aria-describedby": ariaDescribedby,
     "aria-label": ariaLabel,
@@ -162,14 +121,13 @@ export const Input = forwardRef<HTMLDivElement, InputProps>((props, ref) => {
     type,
     value,
     rows: multiline ? rows : undefined,
-    className: inputClassName,
+    className: rootProps,
   };
 
-  // 컴포넌트 렌더링
   const InputComponent = multiline ? "textarea" : "input";
 
   return (
-    <div className={rootClassName} ref={ref} {...other}>
+    <div ref={ref} {...other}>
       {startAdornment}
       <InputComponent {...inputProps} />
       {endAdornment}
@@ -177,5 +135,4 @@ export const Input = forwardRef<HTMLDivElement, InputProps>((props, ref) => {
   );
 });
 
-// 명확한 표시를 위한 디스플레이 이름 설정
 Input.displayName = "Input";

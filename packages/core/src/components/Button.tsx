@@ -1,4 +1,3 @@
-"use client";
 import {
   AnchorHTMLAttributes,
   ButtonHTMLAttributes,
@@ -46,10 +45,10 @@ export type ButtonBaseProps = {
   to?: string;
 } & ButtonVariants;
 
-export interface ButtonOwnerState extends ButtonBaseProps {
+export type ButtonOwnerState = {
   active: boolean;
   focusVisible: boolean;
-}
+} & ButtonBaseProps;
 
 type ButtonVariants = RecipeVariants<typeof buttonRecipe>;
 
@@ -169,7 +168,7 @@ const Button = forwardRef(function Button<
   } = props;
 
   const buttonRef = useRef<HTMLElement>(null);
-  const Component = as || (href || to ? "a" : "button");
+  const ButtonComponent = as || (href || to ? "a" : "button");
 
   const { getRootProps } = useButton({
     disabled,
@@ -192,18 +191,20 @@ const Button = forwardRef(function Button<
     },
   });
 
-  if (Component === "a") {
+  if (ButtonComponent === "a") {
     (rootProps as AnchorHTMLAttributes<HTMLAnchorElement>).href = disabled
       ? undefined
       : href || to;
   } else if (
-    Component === "button" &&
+    ButtonComponent === "button" &&
     !(rootProps as ButtonHTMLAttributes<HTMLButtonElement>).type
   ) {
     (rootProps as ButtonHTMLAttributes<HTMLButtonElement>).type = "button";
   }
 
-  return <Component {...rootProps}>{children}</Component>;
+  return <ButtonComponent {...rootProps}>{children}</ButtonComponent>;
 }) as PolymorphicComponent<"button", ButtonBaseProps>;
 
 export { Button };
+
+Button.displayName = "Button";
