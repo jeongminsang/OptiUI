@@ -14,7 +14,7 @@ import {
   useRef,
   useState,
 } from "react";
-import { buttonRecipe } from "../style.css";
+import { buttonRecipe } from "../style.css.js";
 import { RecipeVariants } from "@vanilla-extract/recipes";
 
 export type PolymorphicComponentProps<

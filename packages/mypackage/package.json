@@ -1,0 +1,13 @@
+{
+    "name": "@minsang/mypackage",
+    "type": "module",
+    "exports": {
+        ".": {
+            "import": "./index.js",
+            "types": "./index.d.ts"
+        }
+    },
+    "dependencies": {
+        "typescript": "~5.7.2"
+    }
+}

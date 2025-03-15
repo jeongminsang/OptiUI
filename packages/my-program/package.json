@@ -1,0 +1,11 @@
+{
+    "name": "@minsang/my-program",
+    "type": "module",
+    "exports": {
+        ".": "./index.js"
+    },
+    "dependencies": {
+        "@minsang/mypackage": "workspace:*",
+        "typescript": "~5.7.2"
+    }
+}
