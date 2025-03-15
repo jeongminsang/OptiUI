@@ -1,6 +1,0 @@
-{
-    "compilerOptions": {
-        "module": "nodenext",
-    },
-    "files": ["./index.ts"],
-}

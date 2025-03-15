@@ -1,7 +1,0 @@
-{
-    "files": ["index.ts"],
-    "compilerOptions": {
-        "module": "nodenext",
-        "declaration": true
-    }
-}

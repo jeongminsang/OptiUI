@@ -114,7 +114,10 @@ importers:
         version: 5.7.3
 
   packages/mypackage:
-    dependencies:
+    devDependencies:
+      react:
+        specifier: ^19.0.0
+        version: 19.0.0
       typescript:
         specifier: ~5.7.2
         version: 5.7.3

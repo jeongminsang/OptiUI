@@ -4,12 +4,9 @@ import viteLogo from "/vite.svg";
 import "./App.css";
 import { Button } from "./components/Button.js";
 import { Input } from "./components/Input.js";
-import { add } from "@minsang/mypackage";
 
 function App() {
   const [count, setCount] = useState(0);
-
-  console.log(add(1, 2));
 
   return (
     <>
