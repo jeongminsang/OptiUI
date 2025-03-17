@@ -1,6 +1,7 @@
 # Node.js
 node_modules/
-packages/main/
+packages/playground/*
+!packages/playground/package.json
 
 # Next.js
 .next/

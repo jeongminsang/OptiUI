@@ -5,11 +5,11 @@
     "packages/*"
   ],
   "scripts": {
-    "dev": "lerna run dev --scope core",
+    "dev": "lerna run watch --scope @minsang/opti-ui & lerna run dev --scope playground",
     "dev-docs": "lerna run dev --scope docs",
-    "build": "lerna run build --scope core",
-    "lint": "lerna run lint --scope core",
-    "preview": "lerna run preview --scope core"
+    "build": "lerna run build --scope playground",
+    "lint": "lerna run lint --scope playground",
+    "preview": "lerna run preview --scope playground"
   },
   "dependencies": {
     "next": "^15.2.2",
