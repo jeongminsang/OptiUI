@@ -1,5 +1,12 @@
 {
     "name": "@minsang/opti-ui",
+    "version": "1.0.0",
+    "description": "MUI components with Vanilla Extract",
+    "author": "https://github.com/jeongminsang",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/jeongminsang/OptiUI.git"
+    },
     "type": "module",
     "export": {
         ".": "./index.js"
