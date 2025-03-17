@@ -3,7 +3,11 @@ import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
 import "./App.css";
 import { Button } from "./components/Button.js";
-import { Input } from "./components/Input.js";
+// import { Input } from "./components/Input.js";
+import {
+  Button as MinsangButton,
+  Input as MinsangInput,
+} from "@minsang/opti-ui";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -11,6 +15,13 @@ function App() {
   return (
     <>
       <div>
+        <MinsangButton
+          onClick={() => setCount((count) => count + 1)}
+          variant='primary'
+        >
+          Button count is {count}
+        </MinsangButton>
+        <MinsangInput />
         <a href='https://vite.dev' target='_blank'>
           <img src={viteLogo} className='logo' alt='Vite logo' />
         </a>
@@ -26,7 +37,7 @@ function App() {
         >
           count is {count}
         </Button>
-        <Input />
+        {/* <Input /> */}
         <p>
           Edit <code>src/App.tsx</code> and save to test HMR
         </p>

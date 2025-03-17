@@ -30,9 +30,42 @@ importers:
 
   packages/core:
     dependencies:
-      '@minsang/mypackage':
+      '@types/react':
+        specifier: ^19.0.10
+        version: 19.0.10
+      '@vanilla-extract/css':
+        specifier: ^1.17.1
+        version: 1.17.1
+      '@vanilla-extract/recipes':
+        specifier: ^0.5.5
+        version: 0.5.5(@vanilla-extract/css@1.17.1)
+      typescript:
+        specifier: ~5.7.2
+        version: 5.7.3
+
+  packages/docs:
+    dependencies:
+      next:
+        specifier: ^15.2.2
+        version: 15.2.2(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      nextra:
+        specifier: ^2.13.4
+        version: 2.13.4(next@15.2.2(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      nextra-theme-docs:
+        specifier: ^2.13.4
+        version: 2.13.4(next@15.2.2(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(nextra@2.13.4(next@15.2.2(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      react:
+        specifier: ^18.0.0
+        version: 18.3.1
+      react-dom:
+        specifier: ^18.0.0
+        version: 18.3.1(react@18.3.1)
+
+  packages/main:
+    dependencies:
+      '@minsang/opti-ui':
         specifier: workspace:*
-        version: link:../mypackage
+        version: link:../core
       '@vanilla-extract/css':
         specifier: ^1.17.1
         version: 1.17.1
@@ -85,42 +118,6 @@ importers:
       vite:
         specifier: ^6.2.0
         version: 6.2.1(@types/node@22.13.10)(yaml@2.7.0)
-
-  packages/docs:
-    dependencies:
-      next:
-        specifier: ^15.2.2
-        version: 15.2.2(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
-      nextra:
-        specifier: ^2.13.4
-        version: 2.13.4(next@15.2.2(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
-      nextra-theme-docs:
-        specifier: ^2.13.4
-        version: 2.13.4(next@15.2.2(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(nextra@2.13.4(next@15.2.2(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
-      react:
-        specifier: ^18.0.0
-        version: 18.3.1
-      react-dom:
-        specifier: ^18.0.0
-        version: 18.3.1(react@18.3.1)
-
-  packages/my-program:
-    dependencies:
-      '@minsang/mypackage':
-        specifier: workspace:*
-        version: link:../mypackage
-      typescript:
-        specifier: ~5.7.2
-        version: 5.7.3
-
-  packages/mypackage:
-    devDependencies:
-      react:
-        specifier: ^19.0.0
-        version: 19.0.0
-      typescript:
-        specifier: ~5.7.2
-        version: 5.7.3
 
 packages:
 
@@ -10607,7 +10604,7 @@ snapshots:
   ora@5.3.0:
     dependencies:
       bl: 4.1.0
-      chalk: 4.1.0
+      chalk: 4.1.2
       cli-cursor: 3.1.0
       cli-spinners: 2.6.1
       is-interactive: 1.0.0
