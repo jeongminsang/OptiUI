@@ -15,7 +15,6 @@ import {
   useState,
 } from "react";
 import { buttonRecipe } from "../style.css.js";
-import { RecipeVariants } from "@vanilla-extract/recipes";
 
 export type PolymorphicComponentProps<
   T extends ElementType,
@@ -50,7 +49,7 @@ export type ButtonOwnerState = {
   focusVisible: boolean;
 } & ButtonBaseProps;
 
-type ButtonVariants = RecipeVariants<typeof buttonRecipe>;
+export type ButtonVariants = Parameters<typeof buttonRecipe>[0];
 
 type ButtonProps<RootComponentType extends ElementType = "button"> = {
   children?: ReactNode;

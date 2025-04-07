@@ -1,6 +1,5 @@
 import { ComponentPropsWithRef, ElementType, FocusEventHandler, ReactElement, ReactNode } from "react";
 import { buttonRecipe } from "../style.css.js";
-import { RecipeVariants } from "@vanilla-extract/recipes";
 export type PolymorphicComponentProps<T extends ElementType, Props = object> = Props & Omit<ComponentPropsWithRef<T>, keyof Props> & {
     as?: T;
 };
@@ -22,6 +21,6 @@ export type ButtonOwnerState = {
     active: boolean;
     focusVisible: boolean;
 } & ButtonBaseProps;
-type ButtonVariants = RecipeVariants<typeof buttonRecipe>;
+export type ButtonVariants = Parameters<typeof buttonRecipe>[0];
 declare const Button: PolymorphicComponent<"button", ButtonBaseProps>;
 export { Button };

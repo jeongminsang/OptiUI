@@ -1,6 +1,7 @@
 # Node.js
 node_modules/
 packages/playground/*
+packages/test/*
 !packages/playground/package.json
 
 # Next.js
