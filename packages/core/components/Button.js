@@ -66,7 +66,9 @@ function useButton(params) {
     };
 }
 const Button = forwardRef(function Button(props, forwardedRef) {
-    const { children, className, disabled = false, focusableWhenDisabled = false, href, to, as, variant = "primary", ...other } = props;
+    const { children, className, disabled = false, focusableWhenDisabled = false, href, to, as, 
+    // variant = "primary",
+    ...other } = props;
     const buttonRef = useRef(null);
     const ButtonComponent = as || (href || to ? "a" : "button");
     const { getRootProps } = useButton({
@@ -74,10 +76,10 @@ const Button = forwardRef(function Button(props, forwardedRef) {
         focusableWhenDisabled,
         href,
         to,
-        variant,
+        // variant,
     });
     const rootProps = getRootProps({
-        className: `${buttonRecipe({ variant, disabled })} ${className || ""}`,
+        className: `${buttonRecipe({ disabled })} ${className || ""}`,
         ...other,
         ref: (instance) => {
             buttonRef.current = instance;

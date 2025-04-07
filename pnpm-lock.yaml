@@ -139,6 +139,46 @@ importers:
 
   packages/test:
     dependencies:
+      next:
+        specifier: 15.2.4
+        version: 15.2.4(babel-plugin-macros@3.1.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+      react:
+        specifier: ^19.0.0
+        version: 19.0.0
+      react-dom:
+        specifier: ^19.0.0
+        version: 19.0.0(react@19.0.0)
+    devDependencies:
+      '@eslint/eslintrc':
+        specifier: ^3
+        version: 3.3.0
+      '@tailwindcss/postcss':
+        specifier: ^4
+        version: 4.1.2
+      '@types/node':
+        specifier: ^20
+        version: 20.17.28
+      '@types/react':
+        specifier: ^19
+        version: 19.0.10
+      '@types/react-dom':
+        specifier: ^19
+        version: 19.0.4(@types/react@19.0.10)
+      eslint:
+        specifier: ^9
+        version: 9.22.0(jiti@2.4.2)
+      eslint-config-next:
+        specifier: 15.2.4
+        version: 15.2.4(eslint@9.22.0(jiti@2.4.2))(typescript@5.7.3)
+      tailwindcss:
+        specifier: ^4
+        version: 4.1.2
+      typescript:
+        specifier: ^5
+        version: 5.7.3
+
+  packages/test2:
+    dependencies:
       '@minsang/opti-ui':
         specifier: workspace:*
         version: link:../core
@@ -147,7 +187,7 @@ importers:
         version: 1.17.1(babel-plugin-macros@3.1.0)
       '@vanilla-extract/next-plugin':
         specifier: ^2.4.10
-        version: 2.4.10(babel-plugin-macros@3.1.0)(next@15.2.4(babel-plugin-macros@3.1.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(webpack@5.98.0)
+        version: 2.4.10(babel-plugin-macros@3.1.0)(next@15.2.4(babel-plugin-macros@3.1.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(webpack@5.99.0)
       next:
         specifier: 15.2.4
         version: 15.2.4(babel-plugin-macros@3.1.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
@@ -6535,8 +6575,8 @@ packages:
     resolution: {integrity: sha512-/DyMEOrDgLKKIG0fmvtz+4dUX/3Ghozwgm6iPp8KRhvn+eQf9+Q7GWxVNMk3+uCPWfdXYC4ExGBckIXdFEfH1w==}
     engines: {node: '>=10.13.0'}
 
-  webpack@5.98.0:
-    resolution: {integrity: sha512-UFynvx+gM44Gv9qFgj0acCQK2VE1CtdfwFdimkapco3hlPCJ/zeq73n2yVKimVbtm+TnApIugGhLJnkU6gjYXA==}
+  webpack@5.99.0:
+    resolution: {integrity: sha512-//MpHjkKV7dhKheJ1lJuHkR6tv8ycfYy7YVzVhhIpwKuKCu5/Zty/vGpFi0fV2RRAWTYDuj6oKn4vYyLzRh55g==}
     engines: {node: '>=10.13.0'}
     hasBin: true
     peerDependencies:
@@ -8676,9 +8716,9 @@ snapshots:
       - babel-plugin-macros
       - supports-color
 
-  '@vanilla-extract/next-plugin@2.4.10(babel-plugin-macros@3.1.0)(next@15.2.4(babel-plugin-macros@3.1.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(webpack@5.98.0)':
+  '@vanilla-extract/next-plugin@2.4.10(babel-plugin-macros@3.1.0)(next@15.2.4(babel-plugin-macros@3.1.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(webpack@5.99.0)':
     dependencies:
-      '@vanilla-extract/webpack-plugin': 2.3.18(babel-plugin-macros@3.1.0)(webpack@5.98.0)
+      '@vanilla-extract/webpack-plugin': 2.3.18(babel-plugin-macros@3.1.0)(webpack@5.99.0)
       next: 15.2.4(babel-plugin-macros@3.1.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
     transitivePeerDependencies:
       - babel-plugin-macros
@@ -8711,13 +8751,13 @@ snapshots:
       - tsx
       - yaml
 
-  '@vanilla-extract/webpack-plugin@2.3.18(babel-plugin-macros@3.1.0)(webpack@5.98.0)':
+  '@vanilla-extract/webpack-plugin@2.3.18(babel-plugin-macros@3.1.0)(webpack@5.99.0)':
     dependencies:
       '@vanilla-extract/integration': 8.0.1(babel-plugin-macros@3.1.0)
       debug: 4.4.0
       loader-utils: 2.0.4
       picocolors: 1.1.1
-      webpack: 5.98.0
+      webpack: 5.99.0
     transitivePeerDependencies:
       - babel-plugin-macros
       - supports-color
@@ -14275,14 +14315,14 @@ snapshots:
 
   temp-dir@1.0.0: {}
 
-  terser-webpack-plugin@5.3.14(webpack@5.98.0):
+  terser-webpack-plugin@5.3.14(webpack@5.99.0):
     dependencies:
       '@jridgewell/trace-mapping': 0.3.25
       jest-worker: 27.5.1
       schema-utils: 4.3.0
       serialize-javascript: 6.0.2
       terser: 5.39.0
-      webpack: 5.98.0
+      webpack: 5.99.0
 
   terser@5.39.0:
     dependencies:
@@ -14749,7 +14789,7 @@ snapshots:
 
   webpack-sources@3.2.3: {}
 
-  webpack@5.98.0:
+  webpack@5.99.0:
     dependencies:
       '@types/eslint-scope': 3.7.7
       '@types/estree': 1.0.6
@@ -14771,7 +14811,7 @@ snapshots:
       neo-async: 2.6.2
       schema-utils: 4.3.0
       tapable: 2.2.1
-      terser-webpack-plugin: 5.3.14(webpack@5.98.0)
+      terser-webpack-plugin: 5.3.14(webpack@5.99.0)
       watchpack: 2.4.2
       webpack-sources: 3.2.3
     transitivePeerDependencies:

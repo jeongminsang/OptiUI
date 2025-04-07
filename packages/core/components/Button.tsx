@@ -42,14 +42,15 @@ export type ButtonBaseProps = {
   href?: string;
   onFocusVisible?: FocusEventHandler;
   to?: string;
-} & ButtonVariants;
+  // } & ButtonVariants;
+};
 
 export type ButtonOwnerState = {
   active: boolean;
   focusVisible: boolean;
 } & ButtonBaseProps;
 
-export type ButtonVariants = Parameters<typeof buttonRecipe>[0];
+// export type ButtonVariants = Parameters<typeof buttonRecipe>[0];
 
 type ButtonProps<RootComponentType extends ElementType = "button"> = {
   children?: ReactNode;
@@ -59,7 +60,8 @@ type ButtonProps<RootComponentType extends ElementType = "button"> = {
   href?: string;
   to?: string;
   as?: RootComponentType;
-} & ButtonVariants;
+  // } & ButtonVariants;
+};
 
 function useButton(params: {
   disabled?: boolean;
@@ -162,7 +164,7 @@ const Button = forwardRef(function Button<
     href,
     to,
     as,
-    variant = "primary",
+    // variant = "primary",
     ...other
   } = props;
 
@@ -174,11 +176,11 @@ const Button = forwardRef(function Button<
     focusableWhenDisabled,
     href,
     to,
-    variant,
+    // variant,
   });
 
   const rootProps = getRootProps({
-    className: `${buttonRecipe({ variant, disabled })} ${className || ""}`,
+    className: `${buttonRecipe({ disabled })} ${className || ""}`,
     ...other,
     ref: (instance: HTMLElement | null) => {
       buttonRef.current = instance;
