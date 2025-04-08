@@ -1,4 +1,4 @@
-import { ComponentPropsWithRef, ElementType, FocusEventHandler, ReactElement, ReactNode } from "react";
+import { ComponentPropsWithRef, ElementType, FocusEventHandler, HTMLAttributes, ReactElement, ReactNode } from "react";
 export type PolymorphicComponentProps<T extends ElementType, Props = object> = Props & Omit<ComponentPropsWithRef<T>, keyof Props> & {
     as?: T;
 };
@@ -15,10 +15,18 @@ export type ButtonBaseProps = {
     href?: string;
     onFocusVisible?: FocusEventHandler;
     to?: string;
-};
+} & ButtonVariants;
 export type ButtonOwnerState = {
     active: boolean;
     focusVisible: boolean;
 } & ButtonBaseProps;
+export type ButtonRootProps = {
+    className?: string;
+    as?: ElementType;
+} & ButtonBaseProps & ButtonOwnerState & HTMLAttributes<HTMLElement>;
+export type ButtonVariants = {
+    variant?: "primary" | "secondary" | "danger";
+    disabled?: boolean;
+};
 declare const Button: PolymorphicComponent<"button", ButtonBaseProps>;
 export { Button };

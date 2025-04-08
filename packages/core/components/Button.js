@@ -1,6 +1,7 @@
 import { jsx as _jsx } from "react/jsx-runtime";
 import { forwardRef, useEffect, useRef, useState, } from "react";
-import { buttonRecipe } from "../style.css.js";
+import * as stylex from "@stylexjs/stylex";
+import { styles } from "../styles/stylexStyles.js";
 function useButton(params) {
     const { disabled = false, focusableWhenDisabled = false } = params;
     const [active, setActive] = useState(false);
@@ -66,9 +67,7 @@ function useButton(params) {
     };
 }
 const Button = forwardRef(function Button(props, forwardedRef) {
-    const { children, className, disabled = false, focusableWhenDisabled = false, href, to, as, 
-    // variant = "primary",
-    ...other } = props;
+    const { children, className, disabled = false, focusableWhenDisabled = false, href, to, as, variant = "primary", ...other } = props;
     const buttonRef = useRef(null);
     const ButtonComponent = as || (href || to ? "a" : "button");
     const { getRootProps } = useButton({
@@ -76,10 +75,14 @@ const Button = forwardRef(function Button(props, forwardedRef) {
         focusableWhenDisabled,
         href,
         to,
-        // variant,
+        variant,
+        ...other,
     });
     const rootProps = getRootProps({
-        className: `${buttonRecipe({ disabled })} ${className || ""}`,
+        className: `${className || ""}`,
+        style: {
+            ...stylex.props(styles.buttonBase, variant === "primary" && styles.variantPrimary, variant === "secondary" && styles.variantSecondary, variant === "danger" && styles.variantDanger, disabled && styles.buttonDisabled),
+        },
         ...other,
         ref: (instance) => {
             buttonRef.current = instance;

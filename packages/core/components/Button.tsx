@@ -14,7 +14,8 @@ import {
   useRef,
   useState,
 } from "react";
-import { buttonRecipe } from "../style.css.js";
+import * as stylex from "@stylexjs/stylex";
+import { styles } from "../styles/stylexStyles.js";
 
 export type PolymorphicComponentProps<
   T extends ElementType,
@@ -42,15 +43,23 @@ export type ButtonBaseProps = {
   href?: string;
   onFocusVisible?: FocusEventHandler;
   to?: string;
-  // } & ButtonVariants;
-};
+} & ButtonVariants;
 
 export type ButtonOwnerState = {
   active: boolean;
   focusVisible: boolean;
 } & ButtonBaseProps;
+export type ButtonRootProps = {
+  className?: string;
+  as?: ElementType;
+} & ButtonBaseProps &
+  ButtonOwnerState &
+  HTMLAttributes<HTMLElement>;
 
-// export type ButtonVariants = Parameters<typeof buttonRecipe>[0];
+export type ButtonVariants = {
+  variant?: "primary" | "secondary" | "danger";
+  disabled?: boolean;
+};
 
 type ButtonProps<RootComponentType extends ElementType = "button"> = {
   children?: ReactNode;
@@ -60,8 +69,7 @@ type ButtonProps<RootComponentType extends ElementType = "button"> = {
   href?: string;
   to?: string;
   as?: RootComponentType;
-  // } & ButtonVariants;
-};
+} & ButtonVariants;
 
 function useButton(params: {
   disabled?: boolean;
@@ -164,7 +172,7 @@ const Button = forwardRef(function Button<
     href,
     to,
     as,
-    // variant = "primary",
+    variant = "primary",
     ...other
   } = props;
 
@@ -176,11 +184,21 @@ const Button = forwardRef(function Button<
     focusableWhenDisabled,
     href,
     to,
-    // variant,
+    variant,
+    ...other,
   });
 
   const rootProps = getRootProps({
-    className: `${buttonRecipe({ disabled })} ${className || ""}`,
+    className: `${className || ""}`,
+    style: {
+      ...stylex.props(
+        styles.buttonBase,
+        variant === "primary" && styles.variantPrimary,
+        variant === "secondary" && styles.variantSecondary,
+        variant === "danger" && styles.variantDanger,
+        disabled && styles.buttonDisabled
+      ),
+    },
     ...other,
     ref: (instance: HTMLElement | null) => {
       buttonRef.current = instance;

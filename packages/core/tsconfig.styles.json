@@ -4,7 +4,10 @@
         "moduleResolution": "nodenext",
         "declaration": true,
         "jsx": "react-jsx",
+        "emitDeclarationOnly": true,
+        "outDir": "styles" 
     },
-    "include": ["components/**/*.tsx", "index.ts"],
-    "exclude": ["styles"]
+    "include": ["styles/**/*.ts"],
+    "extends": "./tsconfig.json",
+    "exclude": [],
 }

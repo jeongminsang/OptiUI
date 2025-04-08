@@ -8,7 +8,8 @@ import {
   ReactNode,
   // useState,
 } from "react";
-import { inputRecipe } from "../style.css.js";
+import * as stylex from "@stylexjs/stylex";
+import { styles } from "../styles/stylexStyles.js";
 
 type InputProps = {
   "aria-describedby"?: string;
@@ -92,12 +93,12 @@ export const Input = forwardRef<HTMLDivElement, InputProps>((props, ref) => {
 
   const type = !multiline ? typeProp ?? "text" : undefined;
 
-  const rootProps = `${inputRecipe({
+  const rootProps = `${{
     variant,
     error,
     disabled,
     darkMode,
-  })} ${className || ""}`;
+  }} ${className || ""}`;
 
   const inputProps = {
     "aria-describedby": ariaDescribedby,
@@ -129,7 +130,10 @@ export const Input = forwardRef<HTMLDivElement, InputProps>((props, ref) => {
   return (
     <div ref={ref} {...other}>
       {startAdornment}
-      <InputComponent {...inputProps} />
+      <InputComponent
+        {...inputProps}
+        {...stylex.props(styles.inputBase, disabled && styles.buttonDisabled)}
+      />
       {endAdornment}
     </div>
   );

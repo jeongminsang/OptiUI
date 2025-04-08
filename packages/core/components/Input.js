@@ -2,7 +2,8 @@ import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
 import { forwardRef,
 // useState,
  } from "react";
-import { inputRecipe } from "../style.css.js";
+import * as stylex from "@stylexjs/stylex";
+import { styles } from "../styles/stylexStyles.js";
 export const Input = forwardRef((props, ref) => {
     const { "aria-describedby": ariaDescribedby, "aria-label": ariaLabel, "aria-labelledby": ariaLabelledby, autoComplete, autoFocus, className, defaultValue, disabled = false, endAdornment, error = false, id, multiline = false, name, onClick, onChange, onKeyDown, onKeyUp, onFocus, onBlur, placeholder, readOnly, required, startAdornment, value, type: typeProp, rows, variant = "outlined", darkMode = false, ...other } = props;
     // const [focused, setFocused] = useState(false);
@@ -15,12 +16,12 @@ export const Input = forwardRef((props, ref) => {
         onBlur?.(event);
     };
     const type = !multiline ? typeProp ?? "text" : undefined;
-    const rootProps = `${inputRecipe({
+    const rootProps = `${{
         variant,
         error,
         disabled,
         darkMode,
-    })} ${className || ""}`;
+    }} ${className || ""}`;
     const inputProps = {
         "aria-describedby": ariaDescribedby,
         "aria-label": ariaLabel,
@@ -46,6 +47,6 @@ export const Input = forwardRef((props, ref) => {
         className: rootProps,
     };
     const InputComponent = multiline ? "textarea" : "input";
-    return (_jsxs("div", { ref: ref, ...other, children: [startAdornment, _jsx(InputComponent, { ...inputProps }), endAdornment] }));
+    return (_jsxs("div", { ref: ref, ...other, children: [startAdornment, _jsx(InputComponent, { ...inputProps, ...stylex.props(styles.inputBase, disabled && styles.buttonDisabled) }), endAdornment] }));
 });
 Input.displayName = "Input";
