@@ -5,6 +5,10 @@
         "declaration": true,
         "jsx": "react-jsx",
     },
+    "files": [],
+    "references": [
+        { "path": "./styles" } 
+    ],
     "include": ["components/**/*.tsx", "index.ts"],
     "exclude": ["styles"]
 }

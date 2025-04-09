@@ -12,9 +12,10 @@
         ".": "./index.js"
     },
     "scripts": {
-        "watch": "tsc --watch",
+        "watch": "tsc -b --watch",
         "build:stylex": "webpack --config webpack.config.mjs",
-        "build": "tsc -b tsconfig.styles.json && tsc -b tsconfig.json"
+        "build:types": "tsc -b styles",
+        "build": "pnpm run build:stylex && pnpm run build:types && tsc -b"
     },
     "dependencies": {
         "@stylexjs/stylex": "^0.11.1",
