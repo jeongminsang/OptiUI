@@ -19,7 +19,7 @@ import { styles } from "../styles/stylexStyles.js";
 
 export type PolymorphicComponentProps<
   T extends ElementType,
-  Props = object
+  Props = {}
 > = Props &
   Omit<ComponentPropsWithRef<T>, keyof Props> & {
     as?: T;
@@ -188,17 +188,19 @@ const Button = forwardRef(function Button<
     ...other,
   });
 
+  const styleXProps = stylex.props(
+    styles.buttonBase,
+    variant === "primary" && styles.variantPrimary,
+    variant === "secondary" && styles.variantSecondary,
+    variant === "danger" && styles.variantDanger,
+    disabled && styles.buttonDisabled
+  );
+
   const rootProps = getRootProps({
-    className: `${className || ""}`,
-    style: {
-      ...stylex.props(
-        styles.buttonBase,
-        variant === "primary" && styles.variantPrimary,
-        variant === "secondary" && styles.variantSecondary,
-        variant === "danger" && styles.variantDanger,
-        disabled && styles.buttonDisabled
-      ),
-    },
+    ...styleXProps,
+    className: className
+      ? `${className} ${styleXProps.className}`
+      : styleXProps.className,
     ...other,
     ref: (instance: HTMLElement | null) => {
       buttonRef.current = instance;

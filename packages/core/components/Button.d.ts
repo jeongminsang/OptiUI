@@ -1,5 +1,5 @@
 import { ComponentPropsWithRef, ElementType, FocusEventHandler, HTMLAttributes, ReactElement, ReactNode } from "react";
-export type PolymorphicComponentProps<T extends ElementType, Props = object> = Props & Omit<ComponentPropsWithRef<T>, keyof Props> & {
+export type PolymorphicComponentProps<T extends ElementType, Props = {}> = Props & Omit<ComponentPropsWithRef<T>, keyof Props> & {
     as?: T;
 };
 export type PolymorphicRef<T extends ElementType> = ComponentPropsWithRef<T>["ref"];

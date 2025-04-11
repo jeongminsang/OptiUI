@@ -1,0 +1,78 @@
+
+@layer priority1, priority2, priority3, priority4;
+@layer priority1{
+.x1qmhkjp{border:1px solid #C7D0DD}
+.x10y80cx{border:1px solid #DAE2ED}
+.x1kylzug{border:1px solid}
+.x1gs6z28{border:none}
+.x153ncpu{padding:8px 12px}
+.x1ff1495{padding:8px 16px}
+}
+@layer priority2{
+.x11ik67x{border-color:#007FFF}
+.x1iyexpz{border-color:#434D5B}
+.x1nj2aej{border-color:#9DA8B7}
+.x185da9u{border-color:#C7D0DD}
+.x71xlcl{border-color:red}
+.x9r1u3d{border-color:transparent}
+.xur7f20{border-radius:8px}
+.x1a2a7pz{outline:none}
+.x19eei9o{transition:all .15s ease}
+.x1bwsx9l{transition:border-color .2s ease,box-shadow .2s ease}
+.xk2swo9:focus-visible{outline:none}
+.xi0op8z:hover{border-color:#3399FF}
+.xgyil7x:focus{border-color:#3399FF}
+}
+@layer priority3{
+.xty0zdb{background-color:#007FFF}
+.xnwzyxr{background-color:#1C2025}
+.xs3vap{background-color:#9DA8B7}
+.x11gyomy{background-color:#DAE2ED}
+.x76xe8n{background-color:#E5EAF2}
+.x83z2og{background-color:#fff}
+.xrkmrrc{background-color:red}
+.x12peec7{background-color:white}
+.xtz65jp{box-shadow:0 0 0 3px rgba(255,0,0,.2)}
+html:not([dir='rtl']) .x2omfrh{box-shadow:0 2px 1px rgba(45,45,60,.2),inset 0 1.5px 1px #3399FF,inset 0 -2px 1px #0072E5}
+html[dir='rtl'] .x2omfrh{box-shadow:0 2px 1px rgba(45,45,60,.2), inset 0 1.5px 1px #3399FF, inset 0 -2px 1px #0072E5}
+html:not([dir='rtl']) .x15rcjeh{box-shadow:0 2px 1px rgba(45,45,60,.2),inset 0 1.5px 1px #B0B8C4,inset 0 -2px 1px #6B7A90}
+html[dir='rtl'] .x15rcjeh{box-shadow:0 2px 1px rgba(45,45,60,.2), inset 0 1.5px 1px #B0B8C4, inset 0 -2px 1px #6B7A90}
+html:not([dir='rtl']) .x9wbvdz{box-shadow:0 2px 1px rgba(45,45,60,.2),inset 0 1.5px 1px #ff6666,inset 0 -2px 1px #b30000}
+html[dir='rtl'] .x9wbvdz{box-shadow:0 2px 1px rgba(45,45,60,.2), inset 0 1.5px 1px #ff6666, inset 0 -2px 1px #b30000}
+.xn9xoc3{box-shadow:0 2px 2px #1C2025}
+.xb8z1k4{box-shadow:0 2px 2px #F3F6F9}
+.x1gnnqk1{box-shadow:none}
+.x18d8upl{color:#1C2025}
+.x1gb159m{color:#434D5B}
+.xb5nyu5{color:#9DA8B7}
+.xv1rmlk{color:#C7D0DD}
+.x1awj2ng{color:white}
+.x1h6gzvc{cursor:not-allowed}
+.x1ypdohk{cursor:pointer}
+.x1k15zei{font-family:'IBM Plex Sans',sans-serif}
+.xkpwil5{font-size:.875rem}
+.xo1l8bm{font-weight:400}
+.x1s688f{font-weight:600}
+.x1evy7pa{line-height:1.5}
+.x2b8uid{text-align:center}
+.x3oybdh{transform:scale(1)}
+.x1w306k9:focus-visible{box-shadow:0 0 0 4px #99CCFF}
+.x1qx8wtp:focus-visible{box-shadow:0 0 0 4px #DAE2ED}
+.x13w6jk:focus-visible{box-shadow:0 0 0 4px #ffcccc}
+.xptitdf:hover{background-color:#0072E5}
+.xugivdf:hover{background-color:#6B7A90}
+.x6bay2y:hover{background-color:#b30000}
+.x19ml08v:hover{background-color:#DAE2ED}
+.x1me3so6:focus{background-color:#C7D0DD}
+.x1ticy1s:focus{box-shadow:0 0 0 3px #0072E5}
+.x1yzn685:focus{box-shadow:0 0 0 3px #99CCFF}
+.x17eiy7b:active{background-color:#0066CC}
+.xd7ddj9:active{background-color:#434D5B}
+.x1e2e8oh:active{background-color:#800000}
+.xpk4wdd:active{box-shadow:none}
+.xd58rb1:active{transform:scale(.99)}
+}
+@layer priority4{
+.x1m258z3{width:320px}
+}
+

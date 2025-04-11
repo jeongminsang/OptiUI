@@ -1,13 +1,13 @@
 import path from 'path';
 import { fileURLToPath } from 'url';
+import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 
-// ES 모듈 환경에서 __dirname 대신 필요
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 export default {
   mode: 'production',
-  entry: "./styles/stylexStyles.ts",
+  entry: "./styles/stylexStyles.ts", 
   output: {
     path: path.resolve(__dirname, 'styles'),
     filename: 'stylexStyles.js',
@@ -17,7 +17,7 @@ export default {
     },
   },
   experiments: {
-    outputModule: true, // ESM 활성화
+    outputModule: true,
   },
   resolve: {
     extensions: ['.ts', '.tsx', '.js'],
@@ -31,16 +31,30 @@ export default {
           loader: 'babel-loader',
           options: {
             presets: [
-              '@babel/preset-typescript',
+              '@babel/preset-typescript'
             ],
             plugins: [
               ['@stylexjs/babel-plugin', {
-                stylexSheetsOutputDir: './styles/__stylex__',
+                unstable_moduleResolution: {
+                  type: 'node',
+                  rootDir: __dirname,
+                },
+                genConditionalClasses: true,
+                treeshakeCompensation: true,
               }]
             ]
           },
         },
       },
+      {
+        test: /\.css$/i,
+        use: [MiniCssExtractPlugin.loader, "css-loader", "postcss-loader"],
+      }
     ],
   },
+  plugins: [
+    new MiniCssExtractPlugin({
+      filename: 'stylexStyles.css',
+    }),
+  ],
 };

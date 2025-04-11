@@ -1,3 +1,4 @@
+import "./stylex.global.css";
 export declare const styles: Readonly<{
     readonly buttonBase: Readonly<{
         readonly fontFamily: import("@stylexjs/stylex/lib/StyleXTypes").StyleXClassNameFor<"fontFamily", "'IBM Plex Sans', sans-serif">;
@@ -144,3 +145,4 @@ export declare const styles: Readonly<{
         }>;
     }>;
 }>;
+export default styles;

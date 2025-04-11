@@ -1,4 +1,5 @@
 import * as stylex from '@stylexjs/stylex';
+import "./stylex.global.css";
 
 const blue = {
   200: '#99CCFF',
@@ -168,3 +169,5 @@ export const styles = stylex.create({
     ':focus': { borderColor: blue[400], boxShadow: `0 0 0 3px ${blue[600]}` },
   },
 });
+
+export default styles;

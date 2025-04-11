@@ -78,11 +78,12 @@ const Button = forwardRef(function Button(props, forwardedRef) {
         variant,
         ...other,
     });
+    const styleXProps = stylex.props(styles.buttonBase, variant === "primary" && styles.variantPrimary, variant === "secondary" && styles.variantSecondary, variant === "danger" && styles.variantDanger, disabled && styles.buttonDisabled);
     const rootProps = getRootProps({
-        className: `${className || ""}`,
-        style: {
-            ...stylex.props(styles.buttonBase, variant === "primary" && styles.variantPrimary, variant === "secondary" && styles.variantSecondary, variant === "danger" && styles.variantDanger, disabled && styles.buttonDisabled),
-        },
+        ...styleXProps,
+        className: className
+            ? `${className} ${styleXProps.className}`
+            : styleXProps.className,
         ...other,
         ref: (instance) => {
             buttonRef.current = instance;
