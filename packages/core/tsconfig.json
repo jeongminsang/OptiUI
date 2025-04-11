@@ -4,6 +4,7 @@
         "moduleResolution": "nodenext",
         "declaration": true,
         "jsx": "react-jsx",
+        "skipLibCheck": true,
     },
     "files": [],
     "references": [
