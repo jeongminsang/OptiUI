@@ -9,13 +9,14 @@ jobs:
   publish:
     name: Publish core package to npm
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: packages/core
 
     steps:
-      - name: Checkout repository
+      - name: Checkout repository with sparse checkout
         uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            packages/core
+          sparse-checkout-cone-mode: false
 
       - name: Use Node.js
         uses: actions/setup-node@v4
@@ -23,13 +24,16 @@ jobs:
           node-version: 18
           registry-url: 'https://registry.npmjs.org/'
 
-      - name: Install dependencies
+      - name: Install dependencies (only for core)
+        working-directory: packages/core
         run: npm install
 
-      - name: Build package
+      - name: Build core package
+        working-directory: packages/core
         run: npm run build
 
       - name: Publish to NPM
+        working-directory: packages/core
         run: npm publish --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.PACKAGE_PUBLISH_KEY_NPM }}
