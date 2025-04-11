@@ -24,15 +24,18 @@ jobs:
           node-version: 18
           registry-url: 'https://registry.npmjs.org/'
 
-      - name: Install dependencies (only for core)
-        working-directory: packages/core
-        run: npm install
+      - name: Install pnpm
+        run: npm install -g pnpm
 
-      - name: Build core package
+      - name: Install dependencies with pnpm
         working-directory: packages/core
-        run: npm run build
+        run: pnpm install
 
-      - name: Publish to NPM
+      - name: Build with pnpm
+        working-directory: packages/core
+        run: pnpm build
+
+      - name: Publish to NPM with npm
         working-directory: packages/core
         run: npm publish --access public
         env:
