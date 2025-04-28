@@ -45,6 +45,7 @@ export const Input = forwardRef((props, ref) => {
         value,
         rows: multiline ? rows : undefined,
         className: rootProps,
+        "data-optiui": true,
     };
     const InputComponent = multiline ? "textarea" : "input";
     return (_jsxs("div", { ref: ref, ...other, children: [startAdornment, _jsx(InputComponent, { ...inputProps, ...stylex.props(styles.inputBase, disabled && styles.buttonDisabled) }), endAdornment] }));

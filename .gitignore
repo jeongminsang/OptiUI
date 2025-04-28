@@ -3,6 +3,7 @@ node_modules/
 packages/playground/*
 packages/test/*
 packages/stylex2/*
+packages/test2/*
 !packages/playground/package.json
 
 # Next.js

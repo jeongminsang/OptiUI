@@ -10,6 +10,6 @@
     "references": [
         { "path": "./styles" } 
     ],
-    "include": ["components/**/*.tsx", "index.ts"],
+    "include": ["components/**/*.tsx", "system/**/*.tsx"],
     "exclude": ["styles"]
 }

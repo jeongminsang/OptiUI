@@ -84,6 +84,7 @@ const Button = forwardRef(function Button(props, forwardedRef) {
         className: className
             ? `${className} ${styleXProps.className}`
             : styleXProps.className,
+        "data-optiui": true,
         ...other,
         ref: (instance) => {
             buttonRef.current = instance;

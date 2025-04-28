@@ -123,6 +123,7 @@ export const Input = forwardRef<HTMLDivElement, InputProps>((props, ref) => {
     value,
     rows: multiline ? rows : undefined,
     className: rootProps,
+    "data-optiui": true,
   };
 
   const InputComponent = multiline ? "textarea" : "input";

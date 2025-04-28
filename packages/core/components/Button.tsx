@@ -201,6 +201,7 @@ const Button = forwardRef(function Button<
     className: className
       ? `${className} ${styleXProps.className}`
       : styleXProps.className,
+    "data-optiui": true,
     ...other,
     ref: (instance: HTMLElement | null) => {
       buttonRef.current = instance;
