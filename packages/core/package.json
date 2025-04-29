@@ -1,7 +1,7 @@
 {
     "name": "@minsang/opti-ui",
     "version": "1.0.1",
-    "description": "MUI components with Vanilla Extract",
+    "description": "MUI components with StyleX",
     "author": "https://github.com/jeongminsang",
     "repository": {
         "type": "git",
