@@ -29,5 +29,5 @@ type InputProps = {
     onFocus?: FocusEventHandler<HTMLInputElement | HTMLTextAreaElement>;
     onBlur?: FocusEventHandler<HTMLInputElement | HTMLTextAreaElement>;
 };
-export declare const Input: import("react").ForwardRefExoticComponent<InputProps & import("react").RefAttributes<HTMLDivElement>>;
-export {};
+declare const Input: import("react").ForwardRefExoticComponent<InputProps & import("react").RefAttributes<HTMLDivElement>>;
+export default Input;

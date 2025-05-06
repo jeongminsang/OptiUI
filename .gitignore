@@ -11,7 +11,6 @@ packages/test2/*
 out/
 
 # build
-dist/
 build/
 *.tsbuildinfo
 

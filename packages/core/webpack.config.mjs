@@ -9,8 +9,8 @@ export default {
   mode: 'production',
   entry: "./styles/stylexStyles.ts", 
   output: {
-    path: path.resolve(__dirname, 'styles'),
-    filename: 'stylexStyles.js',
+    path: path.resolve(__dirname),
+    filename: 'dist/styles/stylexStyles.js',
     library: {
       type: 'module',
       export: 'styles'
@@ -54,7 +54,7 @@ export default {
   },
   plugins: [
     new MiniCssExtractPlugin({
-      filename: 'stylexStyles.css',
+      filename: 'dist/styles/stylexStyles.css',
     }),
   ],
 };

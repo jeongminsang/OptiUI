@@ -4,7 +4,7 @@ import { forwardRef,
  } from "react";
 import * as stylex from "@stylexjs/stylex";
 import { styles } from "../styles/stylexStyles.js";
-export const Input = forwardRef((props, ref) => {
+const Input = forwardRef((props, ref) => {
     const { "aria-describedby": ariaDescribedby, "aria-label": ariaLabel, "aria-labelledby": ariaLabelledby, autoComplete, autoFocus, className, defaultValue, disabled = false, endAdornment, error = false, id, multiline = false, name, onClick, onChange, onKeyDown, onKeyUp, onFocus, onBlur, placeholder, readOnly, required, startAdornment, value, type: typeProp, rows, variant = "outlined", darkMode = false, ...other } = props;
     // const [focused, setFocused] = useState(false);
     const handleFocus = (event) => {
@@ -51,3 +51,4 @@ export const Input = forwardRef((props, ref) => {
     return (_jsxs("div", { ref: ref, ...other, children: [startAdornment, _jsx(InputComponent, { ...inputProps, ...stylex.props(styles.inputBase, disabled && styles.buttonDisabled) }), endAdornment] }));
 });
 Input.displayName = "Input";
+export default Input;

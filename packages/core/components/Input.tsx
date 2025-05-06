@@ -42,7 +42,7 @@ type InputProps = {
   onBlur?: FocusEventHandler<HTMLInputElement | HTMLTextAreaElement>;
 };
 
-export const Input = forwardRef<HTMLDivElement, InputProps>((props, ref) => {
+const Input = forwardRef<HTMLDivElement, InputProps>((props, ref) => {
   const {
     "aria-describedby": ariaDescribedby,
     "aria-label": ariaLabel,
@@ -141,3 +141,5 @@ export const Input = forwardRef<HTMLDivElement, InputProps>((props, ref) => {
 });
 
 Input.displayName = "Input";
+
+export default Input;

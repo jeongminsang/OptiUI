@@ -227,6 +227,6 @@ const Button = forwardRef(function Button<
   return <ButtonComponent {...rootProps}>{children}</ButtonComponent>;
 }) as PolymorphicComponent<"button", ButtonBaseProps>;
 
-export { Button };
+export default Button;
 
 Button.displayName = "Button";

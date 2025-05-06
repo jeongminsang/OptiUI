@@ -1,0 +1,6 @@
+.dark [data-optiui]{
+    color: white;
+}
+[data-optiui]{
+    color: black;
+}

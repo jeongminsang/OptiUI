@@ -29,4 +29,4 @@ export type ButtonVariants = {
     disabled?: boolean;
 };
 declare const Button: PolymorphicComponent<"button", ButtonBaseProps>;
-export { Button };
+export default Button;

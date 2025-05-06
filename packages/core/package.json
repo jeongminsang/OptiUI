@@ -8,8 +8,18 @@
         "url": "https://github.com/jeongminsang/OptiUI.git"
     },
     "type": "module",
-    "export": {
-        ".": "./index.js"
+    "main": "./index.js",
+    "exports": {
+        ".": "./index.js",
+        "./components": {
+            "types": "./dist/components/index.d.ts",
+            "import": "./dist/components/index.js"
+        },
+        "./system/ThemeProvider": {
+            "types": "./dist/system/ThemeProvider.d.ts",
+            "import": "./dist/system/ThemeProvider.js"
+        },
+        "./styles": "./dist/styles/stylexStyles.css"
     },
     "scripts": {
         "watch": "tsc -b --watch",
@@ -36,5 +46,8 @@
         "babel-loader": "^10.0.0",
         "webpack": "^5.99.2",
         "webpack-cli": "^6.0.1"
-    }
+    },
+    "files": [
+        "dist"
+    ]
 }

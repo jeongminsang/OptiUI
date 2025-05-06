@@ -107,5 +107,5 @@ const Button = forwardRef(function Button(props, forwardedRef) {
     }
     return _jsx(ButtonComponent, { ...rootProps, children: children });
 });
-export { Button };
+export default Button;
 Button.displayName = "Button";
