@@ -48,6 +48,13 @@
         "webpack-cli": "^6.0.1"
     },
     "files": [
-        "dist"
+        "dist",
+        "index.js",
+        "README.md",
+        "postcss.config.mjs",
+        "tsconfig.json",
+        "tsconfig.watch.json",
+        "webpack.config.mjs",
+        "package.json"
     ]
 }
