@@ -28,7 +28,7 @@ const themeScript = () => `
   function applySystemTheme() {
     const root = document.documentElement;
     const isDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    
+
     if (isDark) {
       root.classList.add('dark');
       root.style.colorScheme = 'dark';
@@ -55,26 +55,31 @@ const ThemeScript = React.memo(() => {
 });
 
 export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
-  const [theme, setThemeState] = useState<Theme>("system");
+  const [theme, setThemeState] = useState<Theme>("system"); // 초기값은 'system'으로 설정
   const [resolvedTheme, setResolvedTheme] = useState<"light" | "dark" | null>(
     null
   );
   const [mounted, setMounted] = useState(false);
 
-  // 마운트 감지 및 초기 상태 설정
+  // 마운트 후 (클라이언트 사이드) localStorage에서 초기 테마 상태를 불러옴
   useEffect(() => {
+    const storedTheme = localStorage.getItem("theme");
+    if (storedTheme === "dark" || storedTheme === "light") {
+      setThemeState(storedTheme);
+    }
     setMounted(true);
-    // 실제 적용될 테마 결정
     const media = window.matchMedia("(prefers-color-scheme: dark)");
-    updateResolvedTheme(media);
-  }, []);
+    updateResolvedTheme(media, theme);
+  }, []); // 빈 의존성 배열로 마운트 시 한 번만 실행
 
   // 현재 resolvedTheme 상태 업데이트 함수
   const updateResolvedTheme = useCallback(
-    (media: MediaQueryList) => {
+    (media: MediaQueryList, currentTheme: Theme) => {
       const systemTheme = media.matches ? "dark" : "light";
       setResolvedTheme(
-        theme === "system" ? systemTheme : (theme as "light" | "dark")
+        currentTheme === "system"
+          ? systemTheme
+          : (currentTheme as "light" | "dark")
       );
     },
     [theme]
@@ -86,19 +91,15 @@ export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
 
     const media = window.matchMedia("(prefers-color-scheme: dark)");
 
-    // 초기 상태 설정
-    updateResolvedTheme(media);
-
     const handleChange = () => {
-      updateResolvedTheme(media);
+      updateResolvedTheme(media, theme);
     };
 
-    // 이벤트 리스너 등록
     media.addEventListener("change", handleChange);
     return () => media.removeEventListener("change", handleChange);
   }, [mounted, theme, updateResolvedTheme]);
 
-  // 테마 변경 적용
+  // 테마 변경 적용 및 로컬 스토리지 업데이트
   useEffect(() => {
     if (!mounted || resolvedTheme === null) return;
 
@@ -106,21 +107,20 @@ export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
     if (resolvedTheme === "dark") {
       root.classList.add("dark");
       root.style.colorScheme = "dark";
+      localStorage.setItem("theme", "dark");
     } else {
       root.classList.remove("dark");
       root.style.colorScheme = "light";
+      localStorage.setItem("theme", "light");
     }
   }, [mounted, resolvedTheme]);
 
-  // 테마 변경 함수
-  const setTheme = useCallback(
-    (newTheme: Theme) => {
-      if (!mounted) return;
-
-      setThemeState(newTheme);
-    },
-    [mounted]
-  );
+  // 테마 변경 함수 (useTheme 훅에서 사용)
+  const setTheme = useCallback((newTheme: Theme) => {
+    setThemeState(newTheme);
+    localStorage.setItem("theme", newTheme);
+    // resolvedTheme은 useEffect에서 theme 변경에 따라 자동으로 업데이트됨
+  }, []);
 
   // 컨텍스트 값 메모이제이션
   const contextValue = useMemo(
@@ -132,12 +132,13 @@ export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
     [theme, resolvedTheme, setTheme]
   );
 
-  // next-themes처럼 내부 스크립트를 주입하는 방식
+  // next-themes처럼 내부 스크립트를 주입하는 방식 (서버 사이드 렌더링 고려)
   return (
     <ThemeContext.Provider value={contextValue}>
-      {/* 서버 사이드에서만 스크립트 삽입 (클라이언트에서는 이미 실행됨) */}
       {typeof window === "undefined" && <ThemeScript />}
       {children}
     </ThemeContext.Provider>
   );
 };
+
+export const useTheme = () => React.useContext(ThemeContext);
