@@ -1,6 +1,12 @@
-import withNextra from 'nextra' 
-
+import nextra from 'nextra'
+ 
+// Set up Nextra with its configuration
+const withNextra = nextra({
+  search: true,
+  defaultShowCopyCode: true,
+})
+ 
+// Export the final Next.js config with Nextra included
 export default withNextra({
-  theme: 'nextra-theme-docs',
-  themeConfig: './theme.config.ts',
+  // ... Add regular Next.js options here
 })
