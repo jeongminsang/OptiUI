@@ -1,0 +1,71 @@
+# OptiUI 사용법
+
+OptiUI 사용방법을 설명합니다.
+
+## Button
+
+import {ButtonRender, InputRender, UseThemeRender} from '../../app/Showcase'
+
+<ButtonRender />
+
+```jsx filename="Button Example"
+import { Button } from "@minsang/opti-ui/components";
+
+export function ButtonRender() {
+  return <Button>Button</Button>
+}
+```
+
+## Input
+
+<InputRender />
+
+```jsx filename="Input Example"
+import { Input } from "@minsang/opti-ui/components";
+
+export function InputRender() {
+  return <Input placeholder='Input example' />
+}
+```
+
+## ThemeProvider
+
+SSR 을 완벽히 지원하는 사용자 정의 테마 컴포넌트입니다.
+ThemeProvider 로 감싸져 있는 환경에서 useTheme 를 사용할 수 있습니다.
+
+최상위 디렉토리에서 ThemeProvider 컴포넌트로 모든 요소를 감싸줘야 합니다.
+
+```jsx filename="app/layout.jsx"
+import { ThemeProvider } from "@minsang/opti-ui/system/ThemeProvider";
+
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
+  return (
+    <html lang='en' suppressHydrationWarning>
+      <body>
+        <ThemeProvider>{children}</ThemeProvider>
+      </body>
+    </html>
+  );
+}
+```
+
+모든 컴포넌트에서 useTheme 를 호출하여 useState 와 유사한 방식으로 사용할 수 있습니다.
+
+<UseThemeRender/>
+
+```jsx filename="useTheme Example"
+import { useTheme } from "@minsang/opti-ui/system/ThemeProvider";
+
+export default function Components() {
+  const { theme, setTheme } = useTheme();
+  return (
+    <button onClick={() => setTheme(theme === "dark" ? "light" : "dark")}>
+      Toggle Theme
+    </button>
+  );
+}
+```

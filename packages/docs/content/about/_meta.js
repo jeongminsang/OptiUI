@@ -1,3 +1,3 @@
 export default {
-  test: 'test'
+  admin: '관리자'
 };

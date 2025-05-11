@@ -18,7 +18,7 @@ export const metadata = {
 const banner = <Banner storageKey='some-key'>banner</Banner>;
 const navbar = (
   <Navbar
-    logo={<b>Nextra</b>}
+    logo={<b>OptiUI</b>}
     projectLink='https://github.com/jeongminsang/OptiUI'
   />
 );
@@ -37,8 +37,8 @@ export default async function RootLayout({ children }) {
           light: "rgb(250, 250, 250)",
         }}
         color={{
-          hue: { dark: 120, light: 0 },
-          saturation: { dark: 100, light: 100 },
+          hue: 200,
+          saturation: 100,
         }}
       />
       <body>

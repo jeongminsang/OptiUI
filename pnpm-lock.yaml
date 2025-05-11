@@ -82,6 +82,9 @@ importers:
 
   packages/docs:
     dependencies:
+      '@minsang/opti-ui':
+        specifier: ^1.0.7
+        version: 1.0.7(webpack@5.99.2)
       next:
         specifier: ^15.3.2
         version: 15.3.2(babel-plugin-macros@3.1.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
@@ -1084,6 +1087,9 @@ packages:
 
   '@mermaid-js/parser@0.3.0':
     resolution: {integrity: sha512-HsvL6zgE5sUPGgkIDlmAWR1HTNHz2Iy11BAWPTa4Jjabkpguy4Ze2gzfLrg6pdRuBvFwgUYyxiaNqZwrEEXepA==}
+
+  '@minsang/opti-ui@1.0.7':
+    resolution: {integrity: sha512-oWAP9vomXY1IgKuxJjYM0ikrVO4bHsKBxwyw72/qx+IW1tLi+c0GHjWWDELPue/VqA9byDx0x0uCUHC7qTV/Qw==}
 
   '@mui/core-downloads-tracker@5.17.1':
     resolution: {integrity: sha512-OcZj+cs6EfUD39IoPBOgN61zf1XFVY+imsGoBDwXeSq2UHJZE3N59zzBOVjclck91Ne3e9gudONOeILvHCIhUA==}
@@ -7781,6 +7787,22 @@ snapshots:
   '@mermaid-js/parser@0.3.0':
     dependencies:
       langium: 3.0.0
+
+  '@minsang/opti-ui@1.0.7(webpack@5.99.2)':
+    dependencies:
+      '@stylexjs/postcss-plugin': 0.11.1
+      '@stylexjs/stylex': 0.11.1
+      '@types/react': 19.0.10
+      autoprefixer: 10.4.21(postcss@8.5.3)
+      css-loader: 7.1.2(webpack@5.99.2)
+      mini-css-extract-plugin: 2.9.2(webpack@5.99.2)
+      postcss: 8.5.3
+      postcss-loader: 8.1.1(postcss@8.5.3)(typescript@5.7.3)(webpack@5.99.2)
+      typescript: 5.7.3
+    transitivePeerDependencies:
+      - '@rspack/core'
+      - supports-color
+      - webpack
 
   '@mui/core-downloads-tracker@5.17.1': {}
 
