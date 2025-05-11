@@ -9,6 +9,7 @@ packages/test2/*
 # Next.js
 .next/
 out/
+_pagefind/
 
 # build
 build/
